@@ -1,0 +1,82 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:GUI.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1500" d:DesignHeight="900"
+        x:Class="GUI.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Flower Image Classifier"
+		Width="1500"
+		Height="900">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    
+	<Grid RowDefinitions="*,230, 40">
+		<Grid ColumnDefinitions="*,1.7*" >
+			<StackPanel Spacing="10" Grid.Column="0" Margin="10">
+				<Button Content="Load an image and classify" Command="{Binding LoadAndClassifyButtonClick}" HorizontalAlignment="Center" Margin="10" Padding="12" CornerRadius="12"/>
+				<DataGrid ItemsSource="{Binding DisplayResults}" 
+						AutoGenerateColumns="False" 
+						Margin="10"
+						GridLinesVisibility="All"
+						BorderThickness="1"
+						BorderBrush="Gray"
+						MaxWidth="350"
+						MinHeight="200"
+
+					>
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="Class" Binding="{Binding Classification}" Width="*" />
+						<DataGridTextColumn Header="Probability" Binding="{Binding Probability}" Width="*" />
+					</DataGrid.Columns>
+				</DataGrid>
+				
+				<TextBlock Text="{Binding ClassificationMessage}" FontSize="50" Margin="5" Foreground="Green"/>
+				
+				<Label Content="Model File Name: " Margin="5, 0"/>
+				<TextBox Text="{Binding ModelFileName, Mode=TwoWay}" Margin="5, 0"/>
+
+				<Label Content="Training Data folder: " Margin="5, 0"/>
+				<TextBox Text="{Binding TrainingDataDir, Mode=TwoWay}" Margin="5, 0"/>
+
+				<Button Content="Train Model" Command="{Binding TrainModelButtonClick}" HorizontalAlignment="Center" Margin="5" Padding="12" CornerRadius="12"/>
+
+			</StackPanel>
+
+			<Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Margin="10">
+				<Image Source="{Binding DisplayBitmap}" Stretch="Uniform" Margin="10" Grid.Row="0"/>
+			</Border>
+			
+		</Grid>
+
+
+		<TextBox Name="LogTextBox"
+			Text="{Binding LogText, Mode=OneWay}"
+			Grid.Row="1" Margin="10"
+			VerticalAlignment="Stretch"
+			TextWrapping="Wrap"
+			AcceptsReturn="True"
+			IsReadOnly="True"
+			FontFamily="Consolas"
+			FontSize="13"
+			Foreground="Green"
+        />
+
+		<StackPanel Grid.Row="2" Orientation="Horizontal">
+			<TextBlock Text="Epoch: " VerticalAlignment="Center" Margin="10,5"/>
+			<ProgressBar Value="{Binding EpochProgress}" Width="650" Height="20" Minimum="0" Maximum="100" Foreground="Green" />
+			<TextBlock Text="Total: " VerticalAlignment="Center" Margin="10,5"/>
+			<ProgressBar Value="{Binding TotalProgress}" Width="650" Height="20"  Minimum="0" Maximum="100" Foreground="Green" />
+		</StackPanel>
+
+	</Grid>
+
+
+</Window>

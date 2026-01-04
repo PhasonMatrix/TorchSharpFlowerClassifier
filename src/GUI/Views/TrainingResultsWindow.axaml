@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+		xmlns:vm="using:GUI.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="GUI.TrainingResultsWindow"
+		x:DataType="vm:TrainingResultsViewModel"
+        Title="Training Results"
+        Width="1200" Height="680">
+
+  	<StackPanel >
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+			<TextBlock Text="Training Accuracy"  Margin="10" Foreground="{Binding TrainingAccuracyBrush}"/>
+			<TextBlock Text="Validation Accuracy"  Margin="10" Foreground="{Binding ValidationAccuracyBrush}"/>
+		</StackPanel>
+		<lvc:CartesianChart Series="{Binding AccuracyDataSeries}" Height="300">
+		</lvc:CartesianChart>
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+			<TextBlock Text="Training Accuracy" Margin="10" Foreground="{Binding TrainingLossBrush}"/>
+			<TextBlock Text="Validation Accuracy" Margin="10" Foreground="{Binding ValidationLossBrush}"/>
+		</StackPanel>
+		<lvc:CartesianChart Series="{Binding LossDataSeries}" Height="300">
+		</lvc:CartesianChart>
+	</StackPanel>
+</Window>

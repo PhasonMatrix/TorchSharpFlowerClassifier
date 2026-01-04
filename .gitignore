@@ -1,0 +1,78 @@
+# Build results
+**/[Bb]in/*
+**/[Oo]bj/
+**/[Bb]uild/
+**/[Ll]og/
+**/[Ll]ogs/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# JetBrains Rider
+**/.idea/
+*.sln.iml
+
+# VS Code settings
+**/.vscode/
+
+#Visual Studio
+**/.vs/
+
+# Visual Studio Code workspace history
+**/.history/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+**/packages/
+# Uncomment if you have a packages folder in your project root
+# !packages/build/
+
+# DotCover (JetBrains)
+*.dotCover
+
+# Resharper
+**/_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+
+# Publish outputs
+**/publish/
+**/out/
+
+# Others
+*.dbmdl
+*.bak
+*.backup
+*.log
+*.vspscc
+*.vssscc
+*.pdb
+*.cache
+*.tmp
+*.temp
+
+# OS generated files
+**/.DS_Store
+**/Thumbs.db
+**/ehthumbs.db
+**/Desktop.ini
+
+# MSTest test Results
+**/[Tt]est[Rr]esult*/
+**/[Bb]uild[Ll]og.*
+*.trx
+
+# NUnit test results
+**/VisualState.xml
+**/TestResult.xml
+**/nunit-*.xml
+
+# Local environment
+**/.env
+**/.env.*
